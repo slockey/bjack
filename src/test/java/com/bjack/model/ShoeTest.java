@@ -55,21 +55,24 @@ public class ShoeTest {
         assertNull(drawn);
     }
 
-    /**
-     * Card values are 1 based
-     * 
-     * @param cardCount
-     * @param suits
-     * @return
-     */
-    private ArrayList<Card> generateCards(int cardCount, ArrayList<String> suits) {
-        ArrayList<Card> cards = new ArrayList<Card>();
-        for (String suit : suits) {
-            for (int idx = 1; idx <= cardCount; idx++) {
-                String displayValue = String.format("%d of %s", idx, suit);
-                cards.add(new Card(suit, idx, displayValue));
+    @Test
+    public void singleDeckShoeShouldContain53Cards() throws Exception {
+        // shoe will have 52 standard cards + 1 blank
+        boolean moreCards = false;
+        long cardCount = 1;
+
+        Shoe shoe = new Shoe(1);
+        do {
+            Card card = shoe.drawCard();
+            if (card != null) {
+                cardCount = cardCount + 1;
+                moreCards = true;
+            } else {
+                moreCards = false;
             }
-        }
-        return cards;
+        } while (moreCards);
+
+        assertEquals(53, cardCount);
     }
+
 }

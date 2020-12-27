@@ -36,7 +36,6 @@ public class Deck implements Comparable<Deck>{
     public int compareTo(Deck other) {
         // this is going to be a bit of a hack and likely temporary
         // append all card display names and generate hash
-        
         return hash().compareTo(other.hash());
     }
 
