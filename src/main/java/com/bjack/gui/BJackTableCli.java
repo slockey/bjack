@@ -24,4 +24,9 @@ public class BJackTableCli {
         scanner.close();
         return result;
     }
+
+    public void printTableState() {
+        System.out.println("Print table state");
+    }
+
 }
